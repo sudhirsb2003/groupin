@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Groupin</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield :head %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {font-family: 'Ubuntu', sans-serif;font-size:15px;}
+    logo{ text-shadow: 0.1em 0.1em 0.05em #333;
+    font-family: 'Electrolize', sans-serif;; font-size:50px;color:orange}
+  </style>
+</head>
+
+<body style="padding:40px;">
+ <logo> Eventplanner </logo><br>
+  <div class="bs-docs-example" style ="float:right">
+      <% if signed_in? %>
+       <%= link_to current_user.full_name %>(<% if current_user.admin? %> Admin <% else %> Moderator <% end %>) | 
+       <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %> |
+       <%= link_to "Edit Account", edit_user_registration_path %> 
+      <% else %>
+       <%= link_to "login", new_user_session_path %> |
+       <%= link_to "signup", new_user_registration_path %>
+      <% end %>
+  </div>
+  <br>
+</div>
+
+<hr>
+<br><br><br>
+<!--<h1><%= controller_name %> / <%= controller.action_name %> </h1>-->
+<% flash.each do |type, message| %>
+<div class="alert <%= simple_class_for(type) %> fade in">
+<%= message %>
+</div>
+<% end %>
+<div id ="content" style="width:610px;">
+ <%= yield %>
+ <%= yield :scripts %>
+</body>
+</html>

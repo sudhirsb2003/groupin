@@ -1,0 +1,29 @@
+class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :terms, :admin
+  #validates_acceptance_of :terms
+  validates_uniqueness_of :email, :first_name, :last_name,
+                          :message => Proc.new { |error, attributes|
+                          "#{attributes[:value]} has already been taken."},  :on => :create
+
+
+  validates :terms, :acceptance => true
+  # attr_accessible :title, :body
+
+
+  #before_validation(on: :create) do
+  #  self.admin = true
+  #end
+
+  def full_name 
+    self.first_name + ' ' + self.last_name
+  end
+
+
+end

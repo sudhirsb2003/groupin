@@ -1,0 +1,59 @@
+
+<p>
+  <b>Name:</b>
+  <%= @event.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @event.address %>
+</p>
+
+<p>
+  <b>Pincode:</b>
+  <%= @event.pincode %>
+</p>
+
+<p>
+  <b>City name:</b>
+  <%= @event.city_name %>
+</p>
+
+<p>
+  <b>State name:</b>
+  <%= @event.state_name %>
+</p>
+
+<p>
+  <b>Country name:</b>
+  <%= @event.country_name %>
+</p>
+
+<p>
+  <b>Event date:</b>
+  <%= time_tag @event.event_date %>
+</p>
+
+<p>
+  <b>Start time:</b>
+  <%= @event.start_time.strftime("%H:%M:%S %P") %>
+</p>
+
+<p>
+  <b>End time:</b>
+  <%= @event.end_time.strftime("%H:%M:%S %P") %>
+</p>
+
+<p>
+  <b>No of people:</b>
+  <%= @event.no_of_people %>
+</p>
+
+<p>
+  <b>Contact number:</b>
+  <%= @event.contact_number %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

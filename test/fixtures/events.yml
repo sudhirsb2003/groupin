@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  address: MyText
+  pincode: MyString
+  city_name: MyString
+  state_name: MyString
+  country_name: MyString
+  event_date: 2013-07-11
+  start_time: 2013-07-11 08:19:23
+  end_time: 2013-07-11 08:19:23
+  no_of_people: 1
+  contact_number: MyString
+
+two:
+  name: MyString
+  address: MyText
+  pincode: MyString
+  city_name: MyString
+  state_name: MyString
+  country_name: MyString
+  event_date: 2013-07-11
+  start_time: 2013-07-11 08:19:23
+  end_time: 2013-07-11 08:19:23
+  no_of_people: 1
+  contact_number: MyString
