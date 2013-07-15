@@ -6,7 +6,6 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.order("name").page(params[:page]).per(5)
-    @json = Event.all.to_gmaps4rails
 
     respond_to do |format|
       format.html # index.html.erb
@@ -89,7 +88,6 @@ class EventsController < ApplicationController
    @event_id = Event.find(params[:event_id])
    @user_id = User.find(params[:user_id])
    @attendence = EventAttendence.create(:event_id => @event_id.id, :user_id => @user_id.id)
-   #@event = Event.find(@event_id.id)
     if @attendence.save!
          @event_attendence = Event.find("#{@event_id.id}").update_attributes(:no_of_people => (@event_id.no_of_people)-1)
          #@total_attendence = Attendence.find("#{@meal.id}").meal.update_attributes(:no_of_guests_attending => (@meal.no_of_guests_attending)+1)
