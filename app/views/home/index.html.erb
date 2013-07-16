@@ -1,22 +1,24 @@
 <div id="maps">
 	<%= gmaps(:markers => {:data => @json, :options => { :raw => '{ animation: google.maps.Animation.BOUNCE }' } },
-	          :map_options => { :raw => '{ disableDefaultUI: true, scrollwheel: false }' }) %> <br><br>
+	          :map_options => { "auto_zoom" => false, "zoom" => 10, :raw => '{ disableDefaultUI: true, scrollwheel: false }' }) %> <br><br>
 </div>
-
-<div id="body-data" style="height:300px;">
-	<div id="previous_event" style="border-radius:5px;background:#fff;color:blue;width:300px;padding:5px;">
+<% if Event.any? %>
+<div id="body-data">
+	<div id="previous_event">
 		<h2><%= link_to Event.last.name, Event.last %></h2>
 		<%= Event.last.address %><br>
+		no of seats: <%= Event.last.no_of_people_present %><br>
 		Total Attendence :<%= Event.last.no_of_people %>
 	</div>
-	<div id ="current_event"  style ="border-radius:5px;background:#fff;color:blue;width:300px;padding:5px;float:right;margin-right:-570px;margin-top:-110px;">
+	<div id ="current_event">
 		<h2><%= link_to Event.first.name, Event.first %></h2>
 		<%= Event.first.address %><br>
+		no of seats: <%= Event.first.no_of_people_present %><br>
 		Total Attendence :<%= Event.first.no_of_people %>
 	</div>
 	<br><Br>
 </div>
-
+<% end %>
 <div id="footer-data" style="width:600px;">
 	<logo style ="font-size:30px;"> Contact Us </logo>
 	<br><br>

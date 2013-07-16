@@ -7,6 +7,9 @@ class Ability
       can :manage, :all
     else
       can :read, :all
+      can :create, EventAttendence
+      can :event_attendence, Event
+      #can :update, Event
     end
   end
 end

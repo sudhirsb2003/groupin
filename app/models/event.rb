@@ -14,7 +14,8 @@ class Event < ActiveRecord::Base
      new_record? || slug.blank?
    end 
  
-   acts_as_gmappable
+   #acts_as_gmappable :process_geocoding => true 
+   acts_as_gmappable :check_process => false
 
    def gmaps4rails_address
      address

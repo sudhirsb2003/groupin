@@ -34,12 +34,12 @@ ActiveRecord::Schema.define(:version => 20130716133747) do
     t.integer  "no_of_people"
     t.string   "contact_number"
     t.string   "slug"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.boolean  "gmaps"
     t.float    "longitude"
     t.float    "latitude"
-    t.integer  "no_of_people_present"
+    t.integer  "no_of_people_present", :default => 0
   end
 
   add_index "events", ["slug"], :name => "index_events_on_slug", :unique => true
