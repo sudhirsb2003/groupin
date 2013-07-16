@@ -1,3 +1,12 @@
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
+
+<div class="total_attendence"> 
+ <h2> Attendies in this event </h2>
+ <% @event.event_attendences.each do |a| %>
+  <%= a.user.full_name %> |
+ <% end %>
+</div>
 
 <p>
   <b>Name:</b>
@@ -55,5 +64,7 @@
 </p>
 
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+	<%= gmaps(:markers => {:data => @json, :options => { :raw => '{ animation: google.maps.Animation.BOUNCE }' } },
+	          :map_options => {  "auto_zoom" => false, "zoom" => 10, :raw => '{ disableDefaultUI: true, scrollwheel: false }' }) %> <br><br>
+	          
+	          

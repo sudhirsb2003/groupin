@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130714145502) do
+ActiveRecord::Schema.define(:version => 20130716133747) do
 
   create_table "event_attendences", :force => true do |t|
     t.integer  "event_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "status"
   end
 
   create_table "events", :force => true do |t|
@@ -33,11 +34,12 @@ ActiveRecord::Schema.define(:version => 20130714145502) do
     t.integer  "no_of_people"
     t.string   "contact_number"
     t.string   "slug"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.boolean  "gmaps"
     t.float    "longitude"
     t.float    "latitude"
+    t.integer  "no_of_people_present"
   end
 
   add_index "events", ["slug"], :name => "index_events_on_slug", :unique => true

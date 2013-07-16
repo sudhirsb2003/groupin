@@ -17,7 +17,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
-
+    @json = Event.find(params[:id]).to_gmaps4rails
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }
@@ -87,10 +87,10 @@ class EventsController < ApplicationController
   def event_attendence
    @event_id = Event.find(params[:event_id])
    @user_id = User.find(params[:user_id])
-   @attendence = EventAttendence.create(:event_id => @event_id.id, :user_id => @user_id.id)
+   @status =  params[:status]
+   @attendence = EventAttendence.create(:event_id => @event_id.id, :user_id => @user_id.id, :status => @status )
     if @attendence.save!
-         @event_attendence = Event.find("#{@event_id.id}").update_attributes(:no_of_people => (@event_id.no_of_people)-1)
-         #@total_attendence = Attendence.find("#{@meal.id}").meal.update_attributes(:no_of_guests_attending => (@meal.no_of_guests_attending)+1)
+       @event_attendence = @attendence.event.update_attributes(:no_of_people_present => (@attendence.event.no_of_people_present)+1)
      redirect_to events_path , :notice => "Thank you for coming"
     end
   end

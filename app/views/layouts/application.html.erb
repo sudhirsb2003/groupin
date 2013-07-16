@@ -7,39 +7,45 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= yield :head %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='http://fonts.googleapis.com/css?family=Sarina' rel='stylesheet' type='text/css'>
+
   <style>
-    body {font-family: 'Ubuntu', sans-serif;font-size:15px;}
+    body {font-family: 'Ubuntu', sans-serif;font-size:12px;}
     logo{ text-shadow: 0.1em 0.1em 0.05em #333;
-    font-family: 'Electrolize', sans-serif;; font-size:50px;color:orange}
+    font-family: 'Sarina', cursive; font-size:70px;color:orange}
   </style>
+
 </head>
 
-<body style="padding:40px;">
- <logo> Eventplanner </logo><br>
-  <div class="bs-docs-example" style ="float:right">
+ <body style="padding:40px;">
+
+ <logo> Mumbai on rails </logo><br>
+  <div class="bs-docs-example" style ="float:right;font-size:12px;">
       <% if signed_in? %>
-       <%= link_to current_user.full_name %>(<% if current_user.admin? %> Admin <% else %> Moderator <% end %>) | 
+       <%= link_to current_user.full_name %>(<% if current_user.admin? %> <b style="color:blue">Admin</b> <% else %> Moderator <% end %>) | 
        <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %> |
-       <%= link_to "Edit Account", edit_user_registration_path %> 
+       <%= link_to "Edit Account", edit_user_registration_path %> | 
+       <b><%= link_to 'Add Event', new_event_path if current_user.admin? %></b> 
       <% else %>
        <%= link_to "login", new_user_session_path %> |
        <%= link_to "signup", new_user_registration_path %>
       <% end %>
   </div>
   <br>
+
 </div>
 
 <hr>
 <br><br><br>
-<!--<h1><%= controller_name %> / <%= controller.action_name %> </h1>-->
 <% flash.each do |type, message| %>
-<div class="alert <%= simple_class_for(type) %> fade in">
-<%= message %>
-</div>
+ <div class="alert <%= simple_class_for(type) %> fade in">
+  <%= message %>
+ </div>
 <% end %>
 <div id ="content" style="width:610px;">
  <%= yield %>
  <%= yield :scripts %>
 </body>
+<footer>
+</footer>
 </html>

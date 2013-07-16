@@ -1,21 +1,26 @@
-<%= gmaps4rails(@json) %><br><br>
-
-
-<div id="previous_event" style="border-radius:5px;text-align:center;background:blue;color:white;width:300px;padding:5px;">
-<b><%= Event.last.name %></b><br>
-<%= Event.last.address %><br>
-Total Attendence :<%= Event.last.no_of_people %>
+<div id="maps">
+	<%= gmaps(:markers => {:data => @json, :options => { :raw => '{ animation: google.maps.Animation.BOUNCE }' } },
+	          :map_options => { :raw => '{ disableDefaultUI: true, scrollwheel: false }' }) %> <br><br>
 </div>
 
-<div id ="current_event"  style ="border-radius:5px;text-align:center;background:green;color:white;width:300px;padding:5px;float:right;margin-right:-570px;margin-top:-70px;">
-<b><%= Event.last.name %></b><br>
-<%= Event.last.address %><br>
-Total Attendence :<%= Event.last.no_of_people %>
+<div id="body-data" style="height:300px;">
+	<div id="previous_event" style="border-radius:5px;background:#fff;color:blue;width:300px;padding:5px;">
+		<h2><%= link_to Event.last.name, Event.last %></h2>
+		<%= Event.last.address %><br>
+		Total Attendence :<%= Event.last.no_of_people %>
+	</div>
+	<div id ="current_event"  style ="border-radius:5px;background:#fff;color:blue;width:300px;padding:5px;float:right;margin-right:-570px;margin-top:-110px;">
+		<h2><%= link_to Event.first.name, Event.first %></h2>
+		<%= Event.first.address %><br>
+		Total Attendence :<%= Event.first.no_of_people %>
+	</div>
+	<br><Br>
 </div>
-<br><Br>
 
-<logo style ="font-size:30px;"> Contact Us </logo>
-<br><br>
-<%= image_tag ('facebook_active.png') %>
-<%= image_tag ('google_active.png') %>
-<%= image_tag ('twitter_active.png') %>
+<div id="footer-data" style="width:600px;">
+	<logo style ="font-size:30px;"> Contact Us </logo>
+	<br><br>
+	<a href="https://www.facebook.com/groups/MumbaiOnRails/"> <%= image_tag ('facebook_active.png') %></a>
+	<a href="https://groups.google.com/forum/#!forum/mrug"> <%= image_tag ('google_active.png') %></a>
+	<a href="https://twitter.com/MumbaiOnRails"> <%= image_tag ('twitter_active.png') %> </a>
+</div>

@@ -7,7 +7,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= yield :head %>
-<link href='http://fonts.googleapis.com/css?family=Sarina' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Sarina' rel='stylesheet' type='text/css'>
   <style>
     body {font-family: 'Ubuntu', sans-serif;font-size:15px;}
     logo{ text-shadow: 0.1em 0.1em 0.05em #333;
@@ -21,14 +21,14 @@
 
 <hr>
 <br><br><br>
-<!--<h1><%= controller_name %> / <%= controller.action_name %> </h1>-->
 <% flash.each do |type, message| %>
-<div class="alert <%= simple_class_for(type) %> fade in">
-<%= message %>
-</div>
+	<div class="alert <%= simple_class_for(type) %> fade in">
+		<%= message %>
+	</div>
 <% end %>
+
 <div id ="content" style="width:610px;">
- <%= yield %>
- <%= yield :scripts %>
+	 <%= yield %>
+	 <%= yield :scripts %>
 </body>
 </html>

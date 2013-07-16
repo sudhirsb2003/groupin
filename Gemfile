@@ -9,6 +9,11 @@ gem 'jquery-rails'
 gem "friendly_id"
 gem 'gmaps4rails'
 gem 'kaminari'
+gem "cancan"
+group :development do 
+  gem "better_errors"
+  gem "binding_of_caller"
+end 
 
 # Gems used only for assets and not required
 # in production environments by default.

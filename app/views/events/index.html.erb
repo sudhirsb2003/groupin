@@ -1,16 +1,20 @@
 
-<h1 style="float:right"><%= link_to 'Add Event', new_event_path %></h1>
-
 <% @events.each do |event| %>
-    <b>*<%= link_to event.name, event %></b>
+    <b>*<%= link_to event.name, event %></b> |
        <b><% if current_user.admin? %>
          <%= link_to 'Edit', edit_event_path(event) %> | <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %> </b>
         <h3>RSVP will be closed in <u><%= difference_of_days_between(event.event_date + 1) %></u></h3>
         <%= event.no_of_people %> Peoples <br><br>
-        <b><%= link_to "Yes, Coming", event_attedence_path(:user_id => current_user.id, :event_id => event), :method => :post  %> | 
-        <%= link_to "Not Coming", event_attedence_path(:user_id => current_user.id, :event_id => event), :method => :post  %> | 
-        <%= link_to "May be", event_attedence_path(:user_id => current_user.id, :event_id => event), :method => :post  %></b><br><br>
+        
+          Total attendece :<br>
+            <% event.event_attendences.each do |a| %>
+             <%= a.user.full_name %> |
+            <% end %> <br><br>
+            
+        <b><%= link_to "Yes, Coming", event_attedence_path(:user_id => current_user.id, :event_id => event, :status => "yes, coming"), :method => :post  %> | 
+        <%= link_to "Not Coming", event_attedence_path(:user_id => current_user.id, :event_id => event, :status => "not coming"), :method => :post  %> | 
+        <%= link_to "May be", event_attedence_path(:user_id => current_user.id, :event_id => event, :status => "may be"), :method => :post  %></b><br><br>
     <hr>
 <% end %>
 <br>
