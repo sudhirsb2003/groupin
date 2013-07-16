@@ -1,1 +1,21 @@
-<%= gmaps4rails(@json) %>
+<%= gmaps4rails(@json) %><br><br>
+
+
+<div id="previous_event" style="border-radius:5px;text-align:center;background:blue;color:white;width:300px;padding:5px;">
+<b><%= Event.last.name %></b><br>
+<%= Event.last.address %><br>
+Total Attendence :<%= Event.last.no_of_people %>
+</div>
+
+<div id ="current_event"  style ="border-radius:5px;text-align:center;background:green;color:white;width:300px;padding:5px;float:right;margin-right:-570px;margin-top:-70px;">
+<b><%= Event.last.name %></b><br>
+<%= Event.last.address %><br>
+Total Attendence :<%= Event.last.no_of_people %>
+</div>
+<br><Br>
+
+<logo style ="font-size:30px;"> Contact Us </logo>
+<br><br>
+<%= image_tag ('facebook_active.png') %>
+<%= image_tag ('google_active.png') %>
+<%= image_tag ('twitter_active.png') %>
