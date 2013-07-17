@@ -22,6 +22,12 @@ production:
   database: groupin_production
   username: desidime
   password: desidime123
-  reconnect: true
+
+
+test:
+  adapter: postgresql
+  database: groupin_test
+  username: desidime
+  password: desidime123
 
 

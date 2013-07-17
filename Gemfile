@@ -9,9 +9,9 @@ gem "friendly_id"
 gem 'gmaps4rails'
 gem 'kaminari'
 gem "cancan"
+gem 'pg'
 
 group :development do 
-  gem 'pg'
   gem "better_errors"
   gem "binding_of_caller"
 end 
