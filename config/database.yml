@@ -7,5 +7,21 @@ development:
   adapter: mysql2
   database: groupin_development
   username: root
-  password: safew
+  password: desidime@123
   pool: 5
+
+development:
+    adapter: postgresql
+    host: localhost
+    database: groupin_development
+    username: desidime
+    password: desidime123
+
+production:
+  adapter: postgresql
+  database: groupin_production
+  username: desidime
+  password: desidime123
+  reconnect: true
+
+
