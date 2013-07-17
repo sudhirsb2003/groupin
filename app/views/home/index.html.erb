@@ -1,28 +1,32 @@
 <div id="maps">
-	<%= gmaps(:markers => {:data => @json, :options => { :raw => '{ animation: google.maps.Animation.BOUNCE }' } },
-	          :map_options => { "auto_zoom" => false, "zoom" => 10, :raw => '{ disableDefaultUI: true, scrollwheel: false }' }) %> <br><br>
+   <%= gmaps(:markers => {:data => @json, :options => { :raw => '{ animation: google.maps.Animation.BOUNCE }' } },
+             :map_options => { "auto_zoom" => false, "zoom" => 10, :raw => '{ disableDefaultUI: true, scrollwheel: false }' }) %> <br><br>
 </div>
+
 <% if Event.any? %>
-<div id="body-data">
-	<div id="previous_event">
-		<h2><%= link_to Event.last.name, Event.last %></h2>
-		<%= Event.last.address %><br>
-		no of seats: <%= Event.last.no_of_people_present %><br>
-		Total Attendence :<%= Event.last.no_of_people %>
-	</div>
-	<div id ="current_event">
-		<h2><%= link_to Event.first.name, Event.first %></h2>
-		<%= Event.first.address %><br>
-		no of seats: <%= Event.first.no_of_people_present %><br>
-		Total Attendence :<%= Event.first.no_of_people %>
-	</div>
-	<br><Br>
-</div>
+  <div id="body-data">
+      <div id="previous_event">
+      <h4><%= link_to Event.last.name, Event.last %></h4>
+      <%= Event.last.address %><br>
+      no of seats: <%= Event.last.no_of_people_present %><br>
+      Total Attendence :<%= Event.last.no_of_people %>
+    </div>
+    <div id ="current_event">
+      <h4><%= link_to Event.first.name, Event.first %></h4>
+      <%= Event.first.address %><br>
+      no of seats: <%= Event.first.no_of_people_present %><br>
+      Total Attendence :<%= Event.first.no_of_people %>
+    </div>
+    <h4><%= link_to "View All Events", events_path %></h4>
+
+    <br><Br>
+  </div>
 <% end %>
+
 <div id="footer-data" style="width:600px;">
-	<logo style ="font-size:30px;"> Contact Us </logo>
-	<br><br>
-	<a href="https://www.facebook.com/groups/MumbaiOnRails/"> <%= image_tag ('facebook_active.png') %></a>
-	<a href="https://groups.google.com/forum/#!forum/mrug"> <%= image_tag ('google_active.png') %></a>
-	<a href="https://twitter.com/MumbaiOnRails"> <%= image_tag ('twitter_active.png') %> </a>
+      <logo style ="font-size:30px;"> Contact Us </logo>
+      <br><br>
+      <a href="https://www.facebook.com/groups/MumbaiOnRails/"> <%= image_tag ('facebook-64px.png') %></a>
+      <a href="https://groups.google.com/forum/#!forum/mrug"> <%= image_tag ('facebook-64px.png') %></a>
+      <a href="https://twitter.com/MumbaiOnRails"> <%= image_tag ('facebook-64px.png') %> </a>
 </div>
