@@ -1,6 +1,7 @@
 
 <% @events.each do |event| %>
     <h2>*<%= link_to event.name, event %></h2> |
+    <b>*<%= link_to event.name, event %></b> |
          <%= link_to 'Edit', edit_event_path(event) %> | <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
         <h3>RSVP will be closed in <u><%= difference_of_days_between(event.event_date + 1) %></u></h3>
         <%= event.no_of_people %> Peoples <br><br>
@@ -18,6 +19,15 @@
    <% else %>
     <b>* Register/Login to join this Event </b>
    <% end %>         
+  <% if user_signed_in? %>
+    <% if can? :create, EventAttendence %>
+     <b><%= link_to "Yes, Coming", event_attedence_path(:user_id => current_user.id, :event_id => event, :status => "yes, coming"), :method => :post  %> | 
+     <%= link_to "Not Coming", event_attedence_path(:user_id => current_user.id, :event_id => event, :status => "not coming"), :method => :post  %> | 
+     <%= link_to "May be", event_attedence_path(:user_id => current_user.id, :event_id => event, :status => "may be"), :method => :post  %></b><br><br>
+    <% end %>         
+    <% else %>
+    <b> <%= link_to 'Login', new_user_session_path %> or <%= link_to 'Register', new_user_registration_path %> to attend this event </b>
+  <% end %>
     <hr>
 <% end %>
 <br>

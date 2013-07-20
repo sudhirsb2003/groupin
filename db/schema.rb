@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(:version => 20130716133747) do
   create_table "event_attendences", :force => true do |t|
     t.integer  "event_id"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "status"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.string   "status",     :default => "N/A"
   end
 
   create_table "events", :force => true do |t|
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20130716133747) do
     t.boolean  "gmaps"
     t.float    "longitude"
     t.float    "latitude"
-    t.integer  "no_of_people_present", :default => 0
+    t.integer  "no_of_people_present", :default => 0, :null => false
   end
 
   add_index "events", ["slug"], :name => "index_events_on_slug", :unique => true

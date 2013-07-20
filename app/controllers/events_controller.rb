@@ -1,8 +1,9 @@
 class EventsController < ApplicationController
-  load_and_authorize_resource
   #before_filter :check_session
   before_filter :authenticate_user!, :except => [:index, :show]
-  
+
+  #skip_before_filter :authenticate_user!, :only => [:new, :destroy]
+  load_and_authorize_resource 
   include ApplicationHelper
 
   # GET /events
